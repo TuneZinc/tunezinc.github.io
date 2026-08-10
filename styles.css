@@ -282,6 +282,17 @@ body::before {
   color: var(--text-faint);
 }
 
+.badge .soon,
+.platform-list .soon {
+  font-style: normal;
+  font-size: 0.68em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--violet);
+  opacity: 0.85;
+}
+
 /* ---------- Hero visual / screenshot placeholders ---------- */
 .shot-placeholder {
   position: relative;
