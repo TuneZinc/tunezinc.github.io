@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TuneZinc — Your music. Your machine.</title>
+<meta name="description" content="TuneZinc is a local-first, high-fidelity music player for Windows, macOS, Linux, Android and iOS. Full local library, smart recommendations, and cross-device sync — nothing sent to the cloud." />
+<link rel="icon" href="assets/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="TuneZinc logo" />
+      TuneZinc
+    </a>
+    <ul class="nav-links">
+      <li><a href="#why">Why TuneZinc</a></li>
+      <li><a href="#library">Library</a></li>
+      <li><a href="#playback">Playback</a></li>
+      <li><a href="#sync">Sync &amp; Remote</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="#cta">Get TuneZinc</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Local-first music player</span>
+      <h1>Your music.<br /><em>Your machine.</em></h1>
+      <p class="lead">A Spotify-grade player for the music you already own — full local library, playlists, and smart recommendations, with nothing sent to the cloud.</p>
+      <p class="tech-aside">Built with Flutter for Windows, macOS, Linux, Android, and iOS — from one codebase.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#cta">Get TuneZinc</a>
+        <a class="btn btn-ghost" href="#why">See what it does ↓</a>
+      </div>
+      <div class="platform-badges">
+        <span class="badge">Windows</span>
+        <span class="badge">macOS</span>
+        <span class="badge">Linux</span>
+        <span class="badge">Android</span>
+        <span class="badge">iOS</span>
+      </div>
+    </div>
+    <div class="shot-placeholder hero-shot reveal">
+      <div class="shot-label">
+        <div class="shot-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="6 4 20 12 6 20 6 4"/></svg>
+        </div>
+        <strong>Now Playing screen</strong>
+        <span class="shot-tag">Screenshot placeholder</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why TuneZinc</span>
+      <h2>All the polish, none of the cloud</h2>
+      <p>TuneZinc looks and feels like a modern streaming app — because it should. It just happens to run entirely on hardware you own.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.4"/></svg>
+        </div>
+        <h3>Own it, don't rent it</h3>
+        <p>No subscription, no account, no streaming lock-in. Point TuneZinc at your music folder and it's yours, forever.</p>
+        <p class="tech-note">Under the hood: recursive library scanning + live filesystem watching keep your library in sync with your files automatically.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 13.2 9.5 21 12 13.2 14.5 12 22 10.8 14.5 3 12 10.8 9.5 12 2Z"/></svg>
+        </div>
+        <h3>Smart, without spying</h3>
+        <p>Personalized "song radio," auto-mixes, and playlist suggestions — all computed on your device from a local recommendation model, never sent anywhere.</p>
+        <p class="tech-note">Under the hood: on-device embedding index with selectable match-quality passes (Fast / Medium / Full).</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+        </div>
+        <h3>Sync your own devices, not a server</h3>
+        <p>Pair your phone and desktop over your home network and keep libraries in sync, or pull tracks between them — no third-party server involved.</p>
+        <p class="tech-note">Under the hood: mDNS discovery + password-based pairing, resumable checksum-verified transfer.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.4-3.4a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.4 3.4Z"/></svg>
+        </div>
+        <h3>Play it your way</h3>
+        <p>Remote-control one device from another, script your own add-ons, write metadata back to your files. It's your library to shape.</p>
+        <p class="tech-note">Under the hood: consent-gated add-on scripts hook into context menus across tracks, albums, playlists, and artists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="library">
+  <div class="wrap">
+    <div class="feature-row reveal">
+      <div class="feature-copy">
+        <span class="eyebrow">Library</span>
+        <h3>Drop it in a folder. TuneZinc takes it from there.</h3>
+        <p>Automatic scanning, live updates when files change, and an "Inbox" that auto-organizes new tracks into a clean folder structure. Messy tags get cleaned up automatically via MusicBrainz lookups, and duplicate or broken tracks can be merged with a simple drag-and-drop — no lost play history, no lost playlists.</p>
+        <ul>
+          <li>Recursive folder scanning with live filesystem watching</li>
+          <li>Auto-organizing "Inbox" with dry-run preview</li>
+          <li>MusicBrainz-powered metadata cleanup and album art</li>
+          <li>Drag-and-drop duplicate merging, no history lost</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+          </div>
+          <strong>Library screen</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse reveal" id="playback">
+      <div class="feature-copy">
+        <span class="eyebrow">Playback</span>
+        <h3>Gapless playback, a queue that remembers everything</h3>
+        <p>Full queue control — reorder, shuffle, undo/redo — plus lock-screen and notification controls that just work. TuneZinc remembers where you left off, and tracks what you actually listen to vs. skip so its recommendations keep getting sharper. Synced, karaoke-style lyrics included.</p>
+        <ul>
+          <li>Gapless, high-fidelity local playback</li>
+          <li>Persistent queue and volume across restarts</li>
+          <li>Listen/skip tracking and ratings that sharpen recommendations</li>
+          <li>Synced lyrics from tags, .lrc files, or auto-fetch</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3ZM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3Z"/></svg>
+          </div>
+          <strong>Now Playing + queue</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="feature-copy">
+        <span class="eyebrow">Playlists</span>
+        <h3>Build playlists the way you like</h3>
+        <p>Drag-and-drop reordering, pinning, bulk import from M3U/CSV (including Spotify-exported CSVs), and export back out any time. When you want inspiration, TuneZinc can suggest tracks to add or auto-reorder a playlist by musical similarity.</p>
+        <ul>
+          <li>Full CRUD, pinning, drag-and-drop reordering</li>
+          <li>M3U / M3U8 / CSV import and export</li>
+          <li>AI-style "Suggest songs" with selectable algorithms</li>
+          <li>Smart auto-reorder by musical similarity</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          </div>
+          <strong>Playlist detail</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse reveal">
+      <div class="feature-copy">
+        <span class="eyebrow">Discovery</span>
+        <h3>Discover your own library again</h3>
+        <p>A home dashboard surfaces what you're missing: tracks you haven't played in a while, hidden gems with low play counts, recently added music, and algorithmically generated "radio" stations — all pulled from your own collection, not an algorithm optimizing for someone else's engagement.</p>
+        <ul>
+          <li>Recently played, stale, and recently-added tiles</li>
+          <li>"Song radio," auto-mix, and genre mix</li>
+          <li>Unified search across your library and MusicBrainz</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <strong>Home dashboard</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reveal" id="sync">
+      <div class="feature-copy">
+        <span class="eyebrow">Sync &amp; Remote Control</span>
+        <h3>Your devices, working together</h3>
+        <p>Pair your phone and laptop on the same network and keep them in sync, pull specific albums or playlists from one device to another, or take full remote control of playback on a paired device from your phone. All peer-to-peer, all on your terms.</p>
+        <ul>
+          <li>Zero-config LAN discovery and password-based pairing</li>
+          <li>Resumable, checksum-verified library and media sync</li>
+          <li>Full remote control of a paired device's playback</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07L11.5 4.5"/><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07L12.5 19.5"/></svg>
+          </div>
+          <strong>Device pairing</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-row reverse reveal">
+      <div class="feature-copy">
+        <span class="eyebrow">Extensibility</span>
+        <h3>Built to be extended</h3>
+        <p>Power users can drop in scriptable add-ons that hook into right-click menus across the app — for tracks, albums, playlists, or artists — with explicit consent required before anything runs, and full visibility into what a script is doing while it runs.</p>
+        <ul>
+          <li>JSON-manifest add-ons, run as external scripts</li>
+          <li>Context-aware: track, album, playlist, artist, or global</li>
+          <li>Live console output and explicit consent gating</li>
+        </ul>
+      </div>
+      <div class="shot-placeholder feature-shot">
+        <div class="shot-label">
+          <div class="shot-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v3.2a1.8 1.8 0 0 0 3.6 0V4H20v6.2h-3.2a1.8 1.8 0 0 0 0 3.6H20V20h-6.4v-3.2a1.8 1.8 0 0 0-3.6 0V20H4v-6.4h3.2a1.8 1.8 0 0 0 0-3.6H4Z"/></svg>
+          </div>
+          <strong>Add-on console</strong>
+          <span class="shot-tag">Screenshot placeholder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="platform-strip" id="platforms">
+  <div class="wrap">
+    <h4>Everywhere you are</h4>
+    <ul class="platform-list">
+      <li><span class="dot"></span>Windows</li>
+      <li><span class="dot"></span>macOS</li>
+      <li><span class="dot"></span>Linux</li>
+      <li><span class="dot"></span>Android</li>
+      <li><span class="dot"></span>iOS</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="trust reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div>
+        <h3>Honest about the tradeoffs</h3>
+        <p>TuneZinc's device sync is designed for trusted home networks — sync and remote-control traffic between your own devices is unencrypted by design, since it never leaves your LAN. No cloud means no cloud risk, but it does mean sync only works when your devices can see each other.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="cta">
+  <div class="wrap">
+    <h2>Ready to own your music again?</h2>
+    <p>TuneZinc is free, cross-platform, and runs entirely on your own devices.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#">Download TuneZinc</a>
+      <a class="btn btn-ghost" href="#">View on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="TuneZinc logo" />
+      <span>© 2026 TuneZinc. Your music, your machine.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#why">Why TuneZinc</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
