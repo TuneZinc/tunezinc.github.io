@@ -32,6 +32,7 @@
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 
   --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Rajdhani", "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   --max-width: 1160px;
@@ -233,7 +234,7 @@ body::before {
 }
 
 .hero h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(2.6rem, 5vw, 3.8rem);
   line-height: 1.08;
   margin: 0 0 22px;
@@ -357,7 +358,7 @@ body::before {
 
 /* ---------- Section scaffolding ---------- */
 section {
-  padding: 88px 0;
+  padding: 64px 0;
 }
 
 .section-head {
@@ -371,7 +372,7 @@ section {
 }
 
 .section-head h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(2rem, 3.4vw, 2.6rem);
   color: var(--cream);
   margin: 0 0 14px;
@@ -423,6 +424,7 @@ section {
 .why-card h3 {
   margin: 0 0 10px;
   font-size: 1.08rem;
+  font-family: var(--font-heading);
   color: var(--cream);
 }
 
@@ -467,7 +469,7 @@ section {
 }
 
 .feature-copy h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: 1.9rem;
   color: var(--cream);
   margin: 0 0 16px;
@@ -519,7 +521,7 @@ section {
 }
 
 .team-hero .section-head h1 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4vw, 3rem);
   color: var(--cream);
   margin: 0 0 14px;
@@ -567,6 +569,7 @@ section {
   margin: 0 0 4px;
   color: var(--cream);
   font-size: 1.15rem;
+  font-family: var(--font-heading);
 }
 
 .team-role {
@@ -674,6 +677,7 @@ section {
   margin: 0 0 10px;
   color: var(--cream);
   font-size: 1.3rem;
+  font-family: var(--font-heading);
 }
 
 .trust p {
@@ -684,11 +688,20 @@ section {
 /* ---------- CTA ---------- */
 .cta-band {
   text-align: center;
-  padding: 100px 0;
+  padding: 72px 0;
+}
+
+.cta-logo {
+  width: 180px;
+  aspect-ratio: 2064 / 1180;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 auto 24px;
+  display: block;
 }
 
 .cta-band h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4vw, 3rem);
   color: var(--cream);
   margin: 0 0 18px;
