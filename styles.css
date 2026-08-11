@@ -550,8 +550,8 @@ section {
 }
 
 .team-avatar {
-  width: 76px;
-  height: 76px;
+  width: 104px;
+  height: 104px;
   margin: 0 auto 18px;
   border-radius: 50%;
   background: var(--violet-soft);
@@ -563,6 +563,13 @@ section {
   font-size: 1.5rem;
   font-weight: 600;
   border: 1px dashed var(--border);
+  overflow: hidden;
+}
+
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .team-card h3 {
@@ -591,6 +598,79 @@ section {
 @media (max-width: 700px) {
   .team-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Legal / prose pages ---------- */
+.legal {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 44px 48px;
+}
+
+.legal-updated {
+  color: var(--text-faint);
+  font-size: 0.9rem;
+  margin: -8px 0 32px;
+}
+
+.legal h2 {
+  font-family: var(--font-heading);
+  color: var(--cream);
+  font-size: 1.4rem;
+  margin: 40px 0 12px;
+}
+
+.legal h2:first-of-type {
+  margin-top: 0;
+}
+
+.legal h3 {
+  font-family: var(--font-heading);
+  color: var(--accent-strong);
+  font-size: 1.05rem;
+  margin: 26px 0 10px;
+}
+
+.legal p {
+  color: var(--text-dim);
+  margin: 0 0 14px;
+}
+
+.legal ul {
+  color: var(--text-dim);
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.legal li {
+  margin-bottom: 8px;
+}
+
+.legal a {
+  color: var(--violet-strong);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal a:hover {
+  color: var(--accent-strong);
+}
+
+.legal code {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-size: 0.9em;
+}
+
+@media (max-width: 700px) {
+  .legal {
+    padding: 32px 22px;
   }
 }
 
