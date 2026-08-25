@@ -827,7 +827,7 @@ section {
 
 .cta-logo {
   width: 180px;
-  aspect-ratio: 2064 / 1180;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
   margin: 0 auto 24px;
