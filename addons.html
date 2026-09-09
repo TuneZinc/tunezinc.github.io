@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add-on Development — TuneZinc</title>
+<meta name="description" content="Build add-ons for TuneZinc — scripts triggered from the right-click menu that receive a JSON payload of the selected track, album, artist, or playlist." />
+<link rel="icon" href="assets/logo/app_icon_32.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=2" />
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<header class="hero team-hero" id="top">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin: 0 auto;">
+      <span class="eyebrow">For developers</span>
+      <h1>Building Add-ons</h1>
+      <p>An add-on is a script that runs from TuneZinc's right-click menu. It gets a JSON payload of the selected track, album, artist, or playlist over stdin — and can do whatever you want with it.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="legal reveal">
+
+      <h2>Setup</h2>
+      <p>Add-ons live in <code>%USERPROFILE%\TuneZinc\addons\&lt;addon_name&gt;\</code>. Each add-on is its own subfolder containing a <code>manifest.json</code>. The app scans <code>TuneZinc/addons/*/manifest.json</code> when you click "Scan Add-ons" in Settings, and on first launch.</p>
+
+      <h2>manifest.json</h2>
+      <pre><code>{
+  "displayName": "Debug: Echo Payload",
+  "contexts": ["track", "tracks", "album", "artist", "playlist", "global"],
+  "executable": "python",
+  "scriptPath": "echo_test.py"
+}</code></pre>
+
+      <table>
+        <tr><th>Field</th><th>Meaning</th></tr>
+        <tr><td><code>displayName</code></td><td>Shown in the context menu.</td></tr>
+        <tr><td><code>contexts</code></td><td>Where the add-on appears. Values: <code>track</code>, <code>tracks</code>, <code>album</code>, <code>artist</code>, <code>playlist</code>, <code>global</code>. A single string <code>"context": "track"</code> also works (legacy).</td></tr>
+        <tr><td><code>executable</code></td><td>Binary to run — <code>python</code>, or an absolute path to a bundled <code>.exe</code>.</td></tr>
+        <tr><td><code>scriptPath</code></td><td>Relative to the add-on's own folder. Must stay inside it — no <code>..</code>, no absolute paths. The scanner rejects violations and skips the add-on silently.</td></tr>
+      </table>
+
+      <h2>Run flow</h2>
+      <ol>
+        <li>User picks the add-on from the context menu.</li>
+        <li>App builds a JSON payload for the context (see below).</li>
+        <li>First run of a script — keyed by content hash, not path — pops a consent dialog the user must approve. Re-approval is required if the script content changes.</li>
+        <li>App spawns <code>executable scriptPath</code> (no shell), writes the payload to stdin as one line plus a newline, then closes stdin.</li>
+        <li>stdout/stderr stream live into the console view (Settings → running add-ons), capped at 300 lines / 2000 chars each.</li>
+        <li>Non-zero exit code → stderr is dumped to <code>error_out.txt</code> in the add-on folder.</li>
+        <li>If the add-on's entire stdout trims to a bare <code>http://</code> or <code>https://</code> URL, the app opens it in the default browser. Nothing else in stdout does anything — no <code>file://</code>, no custom schemes, deliberately blocked.</li>
+      </ol>
+      <p>So: read stdin, do work, optionally print exactly one URL to stdout for the app to open, and write everything else to your own file if you want to inspect it (or use the debug console).</p>
+
+      <h2>Payload shapes</h2>
+      <p>Stdin is always a single JSON blob. Each track object carries: <code>id/uuid, path, title, artist, album, albumArtPath, genre, recordingMbid, releaseMbid, bitrate, durationMs, year, trackNumber, discNumber, fileSizeBytes, isDeleted, createdAt</code> — <code>recommendationModelId</code> and <code>audioHash</code> are stripped before sending.</p>
+
+      <h3><code>track</code> / <code>tracks</code> context</h3>
+      <pre><code>{ "tracks": [ {...track} ], "trackCount": 1 }</code></pre>
+
+      <h3><code>album</code> context</h3>
+      <pre><code>{ "albumName": "...", "albumArtist": "...", "tracks": [...], "trackCount": N }</code></pre>
+
+      <h3><code>artist</code> context</h3>
+      <pre><code>{ "artistName": "...", "tracks": [...], "trackCount": N }</code></pre>
+
+      <h3><code>playlist</code> context</h3>
+      <pre><code>{
+  "playlist": {
+    "id": .., "name": .., "description": ..,
+    "createdAt": .., "updatedAt": .., "lastListenedAt": ..,
+    "isPinned": .., "pinnedOrder": .., "trackCount": ..
+  },
+  "tracks": [...],
+  "trackCount": N
+}</code></pre>
+
+      <h3><code>global</code> context</h3>
+      <p>Whatever's currently passed, or this fallback:</p>
+      <pre><code>{"volume":0.75,"playbackStatus":"playing","tracks":[],"trackCount":0}</code></pre>
+
+      <h2>Minimal script (Python)</h2>
+      <pre><code>import sys, json
+
+def main():
+    data = json.loads(sys.stdin.read())
+    # ... do work ...
+    print(json.dumps({"status": "success"}))  # or print a bare URL to open it
+
+if __name__ == "__main__":
+    main()</code></pre>
+      <p>See <code>debug_echo/echo_test.py</code> — dumps the full payload to <code>debug_output.txt</code> next to the script, handy for checking the exact shape the app sends for a given context. <a href="assets/addons/debug_echo.7z">Download the debug_echo example add-on</a> (.7z).</p>
+
+      <h2>Notes</h2>
+      <ul>
+        <li>No payload as a CLI arg — stdin only.</li>
+        <li>Keep stdout small and clean if you want the app's snackbar/URL-launch behavior to stay sane — dump big debug data to your own file instead.</li>
+        <li>The add-on folder is writable by the script (<code>error_out.txt</code>, any output files) — same permissions as the user running TuneZinc.</li>
+        <li>Only install or run add-ons from sources you trust — an add-on can do anything its script can do with your local permissions.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer-mount"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

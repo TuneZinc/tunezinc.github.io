@@ -668,6 +668,59 @@ section {
   font-size: 0.9em;
 }
 
+.legal pre {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 18px 20px;
+  overflow-x: auto;
+  margin: 0 0 18px;
+}
+
+.legal pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85em;
+}
+
+.legal pre,
+.legal code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.legal table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 18px;
+  font-size: 0.92rem;
+}
+
+.legal th,
+.legal td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  vertical-align: top;
+}
+
+.legal th {
+  color: var(--cream);
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.legal ol {
+  color: var(--text-dim);
+  margin: 0 0 14px;
+  padding-left: 22px;
+}
+
+.legal ol li {
+  margin-bottom: 8px;
+}
+
 @media (max-width: 700px) {
   .legal {
     padding: 32px 22px;
