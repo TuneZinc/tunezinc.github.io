@@ -1042,3 +1042,19 @@ footer .wrap {
     align-items: flex-start;
   }
 }
+
+/* ---------- Real screenshots in placeholder frames ---------- */
+.shot-placeholder.has-shot {
+  min-height: 0;
+}
+
+.shot-placeholder.has-shot::before {
+  display: none;
+}
+
+.shot-placeholder.has-shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
